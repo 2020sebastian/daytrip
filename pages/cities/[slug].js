@@ -62,6 +62,7 @@ export default function BlogPost({city}){
       </Head>
       <main className={"max-w-4xl mx-auto pt-16"}>
         <h1 className={"text-3xl font-bold"}>{city.slug}</h1>
+        <img src={coverPhoto.url} alt=''></img>
       </main>
     </div>
   )
