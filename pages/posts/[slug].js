@@ -1,4 +1,5 @@
 import { GraphQLClient,  gql} from 'graphql-request'
+import Head from "next/head";
 
 const graphcms = new GraphQLClient("https://us-east-1-shared-usea1-02.cdn.hygraph.com/content/clj7hvu360po401t28eea01fd/master");
 
@@ -53,8 +54,17 @@ export async function getStaticProps({ params }){
 
 export default function BlogPost({post}){
   const { title, coverPhoto, slug } = post;
-  console.log("title: " + title);
-  console.log("coverPhoto: ", coverPhoto);
-  console.log("slug: " + slug);
-  return <div>Debugging...</div>
+  
+  return (
+    <div className={""}>
+      <Head>
+        <title>City</title>
+      </Head>
+      <main className={"max-w-4xl mx-auto pt-16"}>
+        <h1 className={"text-3xl font-bold"}>{post.slug}</h1>
+      </main>
+    </div>
+  )
+
+  
 }

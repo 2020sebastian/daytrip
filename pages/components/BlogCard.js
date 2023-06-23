@@ -1,8 +1,5 @@
 
 export default function BlogPost({title, coverPhoto, slug}){
-    // console.log("title: " + title)
-    // console.log("coverPhoto: " + coverPhoto)
-    // console.log("slug: " + slug)
     return (
         <div>
             <div>
