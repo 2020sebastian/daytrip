@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { GraphQLClient,  gql} from 'graphql-request'
 import Link from "next/link";
+import Header from "../components/header" 
 
 const graphcms = new GraphQLClient("https://us-east-1-shared-usea1-02.cdn.hygraph.com/content/clj7hvu360po401t28eea01fd/master");
 
@@ -30,6 +31,9 @@ export async function getStaticProps(){
 export default function Home({cities}) {
   return (
     <div>
+      <Header>
+        
+      </Header>
     <Head>
         <title>One Day Itineraries</title>
       </Head>
