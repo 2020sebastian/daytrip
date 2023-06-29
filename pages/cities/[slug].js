@@ -1,7 +1,5 @@
 import { GraphQLClient,  gql} from 'graphql-request'
-import Head from "next/head";
 import Format from '../layout/format';
-import Image from 'next/image';
 
 const graphcms = new GraphQLClient("https://us-east-1-shared-usea1-02.cdn.hygraph.com/content/clj7hvu360po401t28eea01fd/master");
 
@@ -71,7 +69,7 @@ export default function BlogPost({city}){
           <div className="py-10">
               <img src={coverPhoto.url} alt='' width={900} height={600}></img>
           </div>
-          <div className='content text-gray-600 text-center' dangerouslySetInnerHTML={{__html: content.html}} />
+          <div className='content text-gray-600' dangerouslySetInnerHTML={{__html: content.html}} />
         </section>
     </Format>
   )
