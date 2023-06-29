@@ -1,5 +1,7 @@
 import { GraphQLClient,  gql} from 'graphql-request'
 import Head from "next/head";
+import Format from '../layout/format';
+import Image from 'next/image';
 
 const graphcms = new GraphQLClient("https://us-east-1-shared-usea1-02.cdn.hygraph.com/content/clj7hvu360po401t28eea01fd/master");
 
@@ -11,6 +13,9 @@ query City($slug: String!){
     slug,
     coverPhoto{
       url
+    }
+    content {
+      html
     }
   }
 }
@@ -53,19 +58,21 @@ export async function getStaticProps({ params }){
 }
 
 export default function BlogPost({city}){
-  const { title, coverPhoto, slug } = city;
+  const { title, coverPhoto, slug, content } = city;
   
   return (
-    <div className={""}>
-      <Head>
-        <title>City</title>
-      </Head>
-      <main className={"max-w-4xl mx-auto pt-16"}>
-        <h1 className={"text-3xl font-bold"}>{city.slug}</h1>
-        <img src={coverPhoto.url} alt=''></img>
-      </main>
-    </div>
+    <Format>
+      <section className="container mx-auto md:px-2 py-16 w-1/2">
+        <div className="flex justify-center">
+          <div className="post py-10">
+            <h1 className="text-4xl font-bold text-center pb-5">{title}</h1>
+            </div>
+          </div>
+          <div className="py-10">
+              <img src={coverPhoto.url} alt='' width={900} height={600}></img>
+          </div>
+          <div className='content text-gray-600 text-center' dangerouslySetInnerHTML={{__html: content.html}} />
+        </section>
+    </Format>
   )
-
-  
 }
