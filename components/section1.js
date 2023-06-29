@@ -1,15 +1,15 @@
 import Head from 'next/head'
 import Link from "next/link";
 
-function section1( {cities} ) {
+export default function section1( {cities} ) {
   return (
     <div>
         <Head>
         <title>One Day Itineraries</title>
       </Head>
 
-    <main className={"max-w-4xl mx-auto pt-16"}>
-      <h1 className={"text-3xl font-bold"}>One Day Itineraries</h1>
+    <section className={"max-w-4xl mx-auto pt-16"}>
+      <h1 className={"text-3xl font-bold text-center"}>Trending</h1>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-14">
 
@@ -20,12 +20,9 @@ function section1( {cities} ) {
               <h2 className={"text-xl font-semibold"}>{city.title}</h2>
             </a>
           </Link>
-          
         ))}
       </div>
-    </main>
+    </section>
     </div>
   )
 }
-
-export default section1
