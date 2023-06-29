@@ -1,5 +1,8 @@
 import { GraphQLClient,  gql} from 'graphql-request'
 import Format from '../layout/format';
+import ReactMarkdown from 'react-markdown';
+import { useRouter } from 'next/router';
+
 
 const graphcms = new GraphQLClient("https://us-east-1-shared-usea1-02.cdn.hygraph.com/content/clj7hvu360po401t28eea01fd/master");
 
@@ -13,7 +16,7 @@ query City($slug: String!){
       url
     }
     content {
-      html
+      markdown
     }
   }
 }
@@ -57,6 +60,7 @@ export async function getStaticProps({ params }){
 
 export default function BlogPost({city}){
   const { title, coverPhoto, slug, content } = city;
+  const router = useRouter();
   
   return (
     <Format>
@@ -69,7 +73,11 @@ export default function BlogPost({city}){
           <div className="py-10">
               <img src={coverPhoto.url} alt='' width={900} height={600}></img>
           </div>
-          <div className='content text-gray-600' dangerouslySetInnerHTML={{__html: content.html}} />
+          <div className='content text-gray-600'>
+            <ReactMarkdown>
+              {content.markdown}
+            </ReactMarkdown>
+          </div>
         </section>
     </Format>
   )
