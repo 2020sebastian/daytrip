@@ -1,7 +1,9 @@
-import Head from 'next/head'
+
 import { GraphQLClient,  gql} from 'graphql-request'
-import Link from "next/link";
 import Format from './layout/format'
+
+//components
+import Section1 from '@/components/section1';
 
 const graphcms = new GraphQLClient("https://us-east-1-shared-usea1-02.cdn.hygraph.com/content/clj7hvu360po401t28eea01fd/master");
 
@@ -31,27 +33,7 @@ export async function getStaticProps(){
 export default function Home({cities}) {
   return (
     <Format>
-       <Head>
-        <title>One Day Itineraries</title>
-      </Head>
-
-      <main className={"max-w-4xl mx-auto pt-16"}>
-      <h1 className={"text-3xl font-bold"}>One Day Itineraries</h1>
-      {cities.map((city) => (
-        <Link
-            href={`/cities/${city.slug}`}
-            passHref
-            key={city.id}
-            legacyBehavior
-          >
-            <a className="block my-8 border border-black p-4 rounded-lg hover:bg-black hover:text-white">
-              <h2 className={"text-xl font-semibold"}>{city.title}</h2>
-            </a>
-          </Link>
-      ))}
-
-
-    </main>
+       <Section1 cities={cities}></Section1>
     </Format>
   )
 }
