@@ -21,7 +21,7 @@ export default function Section1({ cities }) {
         <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-10">
           
         {cities.map((city) => (
-          <div className="rounded overflow-hidden shadow-lg">
+          <div className="rounded overflow-hidden shadow-lg" key={city.id}>
             <Link href={`/cities/${city.slug}`} passHref key={city.id} legacyBehavior>
               <div className="relative">
                <a href={`/cities/${city.slug}`}>
