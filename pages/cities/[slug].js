@@ -2,7 +2,8 @@ import { GraphQLClient,  gql} from 'graphql-request'
 import Format from '../layout/format';
 import ReactMarkdown from 'react-markdown';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
+import Breadcrumb from '@/components/breadcrumb';
+
 
 
 const graphcms = new GraphQLClient("https://us-east-1-shared-usea1-02.cdn.hygraph.com/content/clj7hvu360po401t28eea01fd/master");
@@ -65,17 +66,7 @@ export default function BlogPost({city}){
   
   return (
     <Format>
-      <nav aria-label="breadcrumb" class="w-full p-4 text-gray-800">
-	<ol class="flex h-8 space-x-2 text-gray-800">
-		<li class="flex items-center">
-			<Link rel="noopener noreferrer" href="/" title="Back to homepage" class="flex items-center hover:underline">Home</Link>
-		</li>
-		<li class="flex items-center space-x-1">
-			<span class="text-gray-800">|</span>
-			<Link rel="noopener noreferrer" href={`/cities/${slug}`} class="flex items-center px-1 capitalize text-gray-400">{title}</Link>
-		</li>
-	</ol>
-</nav>
+      {Breadcrumb(slug, title)}
       <section className="container mx-auto md:px-2 py-16 w-1/2">
         <div className="flex justify-center">
           <div className="post py-10">
@@ -94,3 +85,4 @@ export default function BlogPost({city}){
     </Format>
   )
 }
+
