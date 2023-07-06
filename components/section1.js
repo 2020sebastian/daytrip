@@ -22,6 +22,7 @@ export default function Section1({ cities }) {
           
         {cities.map((city) => (
           <div className="rounded overflow-hidden shadow-lg" key={city.id}>
+            
             <Link href={`/cities/${city.slug}`} passHref key={city.id} legacyBehavior>
               <div className="relative">
                <a href={`/cities/${city.slug}`}>
