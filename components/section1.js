@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Section1({ cities }) {
@@ -26,12 +27,8 @@ export default function Section1({ cities }) {
             <Link href={`/cities/${city.slug}`} passHref key={city.id} legacyBehavior>
               <div className="relative">
                <a href={`/cities/${city.slug}`}>
-                 <img
-                  className="w-full"
-                  src="https://images.pexels.com/photos/196667/pexels-photo-196667.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                  alt="Sunset in the mountains"
-                />
                 <div className="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25"></div>
+                <Image src={`https://daytrip.s3.amazonaws.com/${city.slug}.jpg`} alt={city.slug} width={900} height={500}></Image>
               </a>
               <a href="#!">
                 <div className="absolute bottom-0 left-0 bg-teal-600 px-4 py-2 text-white text-sm hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">

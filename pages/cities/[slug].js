@@ -3,6 +3,7 @@ import Format from '../layout/format';
 import ReactMarkdown from 'react-markdown';
 import { useRouter } from 'next/router';
 import Breadcrumb from '@/components/breadcrumb';
+import Image from 'next/image';
 
 
 
@@ -14,9 +15,6 @@ query City($slug: String!){
     id,
     title,
     slug,
-    coverPhoto{
-      url
-    }
     content {
       markdown
     }
@@ -61,9 +59,7 @@ export async function getStaticProps({ params }){
 }
 
 export default function BlogPost({city}){
-  const { title, coverPhoto, slug, content } = city;
-  const router = useRouter();
-  
+  const { title, slug, content } = city;
   return (
     <Format>
       {Breadcrumb(slug, title)}
@@ -74,7 +70,7 @@ export default function BlogPost({city}){
             </div>
           </div>
           <div className="py-10">
-              <img src={coverPhoto.url} alt='' width={900} height={600}></img>
+          <Image src={`https://daytrip.s3.amazonaws.com/${slug}.jpg`} alt={slug} width={900} height={600}></Image>
           </div>
           <div className='content text-gray-600'>
             <ReactMarkdown>

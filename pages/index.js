@@ -1,8 +1,5 @@
-
 import { GraphQLClient,  gql} from 'graphql-request'
 import Format from './layout/format'
-
-//components
 import Section1 from '@/components/section1';
 
 const graphcms = new GraphQLClient("https://us-east-1-shared-usea1-02.cdn.hygraph.com/content/clj7hvu360po401t28eea01fd/master");
@@ -13,9 +10,6 @@ const QUERY = gql`
     id,
     title,
     slug,
-    coverPhoto{
-      url
-    }
   }
 }
 `
