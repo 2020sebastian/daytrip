@@ -60,6 +60,7 @@ export async function getStaticProps({ params }){
 
 export default function BlogPost({city}){
   const { title, slug, content } = city;
+  
   return (
     <Format>
       {Breadcrumb(slug, title)}
@@ -73,9 +74,7 @@ export default function BlogPost({city}){
           <Image src={`https://daytrip.s3.amazonaws.com/${slug}.jpg`} alt={slug} width={900} height={600}></Image>
           </div>
           <div className='content text-gray-600'>
-            <ReactMarkdown>
-              {content.markdown}
-            </ReactMarkdown>
+          <ReactMarkdown>{content.markdown}</ReactMarkdown>
           </div>
         </section>
     </Format>
